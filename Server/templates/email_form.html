@@ -6,18 +6,19 @@
 </head>
 <body>
     <div class="ui row grid">
-    <h2>Send {{ filename }}</h2>
+    <h2>Отправить {{ filename }}</h2>
+    <a href = "/">Назад на главную страницу</a>
     <form class="ui form" action="Email" method="post">
         <div class="field">
-        <label for="username">Enter your username:</label>
+        <label for="username">Введите ваш логин:</label>
 	    <input type="text" name="username">
         </div>
         <div class="field">
-        <label for="password">Enter your username:</label>
+        <label for="password">Ввeдите ваш пароль:</label>
 	    <input type="password" name="password">
         </div>
         <div class="field">
-        <label for="to">Enter the destination email:</label>
+        <label for="to">Ввeдите email получателя:</label>
         <input type="text" list="emails" />
             <datalist id="emails">
                 {% for email in contragents %}
@@ -26,11 +27,11 @@
             </datalist>
         </div>
         <div class="field">
-        <label for="subject">Enter the subject of email:</label>
+        <label for="subject">Ввeдите тему письма:</label>
 	    <input type="text" name="subject">
         </div>
         <div class="field">
-        <label for="text">Enter the email text:</label>
+        <label for="text">Введите текст письма:</label>
 	    <input type="text" name="text">
         </div>
         <div class="field">

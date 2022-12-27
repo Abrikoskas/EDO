@@ -8,7 +8,7 @@ from main_view import docs_set
 class UploadForm(FlaskForm):
     doc = FileField(validators=[FileAllowed(docs_set, 'Docs only!'),
                       FileRequired('File was empty!')])
-    submit = SubmitField('Upload')
+    submit = SubmitField('Загрузить')
 
 
 class File:

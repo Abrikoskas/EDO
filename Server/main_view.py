@@ -18,6 +18,7 @@ configure_uploads(app, docs_set)
 
 patch_request_class(app)
 
+contragents = ['iii']
 
 # ------------Main page------------
 @app.route('/', methods=['GET', 'POST'])
@@ -59,7 +60,25 @@ def email_send_file(filename):
                         gmail_user=username, gmail_password=password,
                         files=files)
         return redirect('/')
-    return render_template('email_form.html', filename=filename)
+    return render_template('email_form.html', filename=filename, contragents=contragents)
+
+
+@app.route('/contragents', methods=['GET', 'POST'])
+def contragents_view():
+    print(contragents)
+    if request.method == 'POST':
+        email = request.form.get('email')
+    # if "submit" in request.form:  # если нажата кнопка добавить
+        contragents.append(email)
+        print(f"after submit{contragents}")
+        return redirect('/contragents')
+    return render_template('contragents.html', contragents=contragents)
+
+
+@app.route('/delete_contragent/<email>', methods=['GET', 'POST'])
+def delete_contragent(email):
+    contragents.remove(email)
+    return redirect('/contragents')
 
 
 if __name__ == '__main__':

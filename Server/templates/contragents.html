@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="static/Semantic-UI-CSS/semantic.min.css">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="static/Semantic-UI-CSS/semantic.min.js"></script>
+<title>Upload File</title>
+<body class="ui three column grid" id="container">
+     <div class="row grid">
+          <div class="column"></div>
+          <div class="column">
+              <h1>Ваши контрагенты</h1>
+              <a href = "/">Назад на главную страницу</a>
+              <div class="row">
+                  <form method="POST" enctype="multipart/form-data">
+                       <label for="email">Enter contragent email:</label>
+	                    <input type="text" name="email">
+                        <div class="field">
+                        <input type="submit" value="Отправить">
+                        </div>
+                  </form>
+              </div>
+              <div class="ui divider"></div>
+                  {% if contragents %}
+                  {% for contragent in contragents %}
+                    <div class="row">
+                       <div class="ui two column vertically divided grid">
+                           <div class="column one wide left floated"><p>{{ contragent }}</p></div>
+                           <div class="column one wide right floated column"><button class='ui button' onclick="window.location.href='/delete_contragent/{{ contragent }}'">Удалить</button></div>
+                       </div>
+                    </div>
+                    <div class="ui divider"></div>
+                  {% endfor %}
+                  {% endif %}
+          </div>
+         <div class="column"></div>
+     </div>
+</body>

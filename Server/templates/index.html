@@ -11,6 +11,7 @@
           <div class="column"></div>
           <div class="column">
               <h1>Система электронного документооборота</h1>
+              <a href="/contragents">Ваши контрагенты</a>
               <div class="row">
                   <form method="POST" enctype="multipart/form-data">
                       <h2>Ваши файлы</h2>
@@ -28,8 +29,8 @@
                     <div class="row">
                        <div class="ui three column vertically divided grid">
                            <div class="column one wide left floated"><a href="/download/{{ file.name }}">{{ file.name }}</a></div>
-                           <div class="column one wide right floated column"><button class='ui button' onclick="window.location.href='/delete/{{ file.name }}'">Delete file</button></div>
-                           <div class="column one wide right floated column"><button class='ui button' onclick="window.location.href='/SendEmail/{{ file.name }}'">Send file</button></div>
+                           <div class="column one wide right floated column"><button class='ui button' onclick="window.location.href='/delete/{{ file.name }}'">Удалить</button></div>
+                           <div class="column one wide right floated column"><button class='ui button' onclick="window.location.href='/SendEmail/{{ file.name }}'">Отправить</button></div>
                        </div>
                     </div>
                     <div class="ui divider"></div>
