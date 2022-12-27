@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email</title>
+</head>
+<body>
+    <div class="ui row grid">
+    <h2>Send {{ filename }}</h2>
+    <form class="ui form" action="Email" method="post">
+        <div class="field">
+        <label for="username">Enter your username:</label>
+	    <input type="text" name="username">
+        </div>
+        <div class="field">
+        <label for="password">Enter your username:</label>
+	    <input type="password" name="password">
+        </div>
+        <div class="field">
+        <label for="to">Enter the destination email:</label>
+        <input type="text" list="emails" />
+            <datalist id="emails">
+                {% for email in contragents %}
+                <option>{{ email }}</option>
+                {% endfor %}
+            </datalist>
+        </div>
+        <div class="field">
+        <label for="subject">Enter the subject of email:</label>
+	    <input type="text" name="subject">
+        </div>
+        <div class="field">
+        <label for="text">Enter the email text:</label>
+	    <input type="text" name="text">
+        </div>
+        <div class="field">
+	    <input type="submit">
+        </div>
+    </form>
+    </div>
+</body>
+</html>

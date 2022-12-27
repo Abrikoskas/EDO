@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="Semantic-UI-CSS/semantic.min.css">
+<link rel="stylesheet" type="text/css" href="static/Semantic-UI-CSS/semantic.min.css">
 <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-<script src="semantic/dist/semantic.min.js"></script>
+<script src="static/Semantic-UI-CSS/semantic.min.js"></script>
 <title>Upload File</title>
-<h1>Система электронного документооборота</h1>
-<form method="POST" enctype="multipart/form-data">
-     {{ form.hidden_tag() }}
-     {{ form.doc }}
-     {% for error in form.doc.errors %}
-         <span style="color: red;">{{ error }}</span>
-     {% endfor %}
-     {{ form.submit }}
-</form>
-
-
-{% if docs %}
-{% for file in docs.get_docs() %}
-     <a href="/download/{{ file.name }}">{{ file.name }}</a>
-     <button onclick="window.location.href='/delete/{{ file.name }}'">Delete file</button>
-     <br>
-{% endfor %}
-{% endif %}
+<body class="ui three column grid" id="container">
+     <div class="row grid">
+          <div class="column"></div>
+          <div class="column">
+              <h1>Система электронного документооборота</h1>
+              <div class="row">
+                  <form method="POST" enctype="multipart/form-data">
+                      <h2>Ваши файлы</h2>
+                       {{ form.hidden_tag() }}
+                       {{ form.doc(class_="ui button") }}
+                       {% for error in form.doc.errors %}
+                           <span style="color: red;">{{ error }}</span>
+                       {% endfor %}
+                       {{ form.submit(class_="ui button") }}
+                  </form>
+              </div>
+              <div class="ui divider"></div>
+                  {% if docs %}
+                  {% for file in docs.get_docs() %}
+                    <div class="row">
+                       <div class="ui three column vertically divided grid">
+                           <div class="column one wide left floated"><a href="/download/{{ file.name }}">{{ file.name }}</a></div>
+                           <div class="column one wide right floated column"><button class='ui button' onclick="window.location.href='/delete/{{ file.name }}'">Delete file</button></div>
+                           <div class="column one wide right floated column"><button class='ui button' onclick="window.location.href='/SendEmail/{{ file.name }}'">Send file</button></div>
+                       </div>
+                    </div>
+                    <div class="ui divider"></div>
+                  {% endfor %}
+                  {% endif %}
+          </div>
+         <div class="column"></div>
+     </div>
+</body>
